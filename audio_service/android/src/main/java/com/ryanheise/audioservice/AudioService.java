@@ -240,7 +240,11 @@ public class AudioService extends MediaBrowserServiceCompat {
 
     @Override
     public void onCreate() {
+        flutterEngine = AudioServicePlugin.getFlutterEngine(this);
+        System.out.println("flutterEngine warmed up");
+
         super.onCreate();
+        
         instance = this;
         repeatMode = 0;
         shuffleMode = 0;
@@ -278,9 +282,6 @@ public class AudioService extends MediaBrowserServiceCompat {
                 return bitmap.getByteCount() / 1024;
             }
         };
-
-        flutterEngine = AudioServicePlugin.getFlutterEngine(this);
-        System.out.println("flutterEngine warmed up");
     }
 
     @Override
